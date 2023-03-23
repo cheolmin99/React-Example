@@ -1,4 +1,4 @@
-import { useState, MouseEvent } from 'react';
+import React, { useState, MouseEvent, Dispatch, SetStateAction } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,12 +12,15 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
-const pages = [{ title: 'NAVER', viewValue: 'naverSugnIn'}, {title: 'KAKAO', viewValue: 'kakaoSugnIn'} ];
 
-function MenuAppBar() {
-  //! view state //
-  const [view, setView] = useState<string>('');
-  
+
+interface Props {
+  setView: Dispatch<SetStateAction<string>>;
+}
+
+function MenuAppBar({ setView }: Props) {
+  const pages = [{ title: 'Naver', viewValue: 'naverSignIn'}, {title: 'Kakao', viewValue: 'kakaoSignIn'} ];
+
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
@@ -79,8 +82,8 @@ function MenuAppBar() {
               }}
             >
               {/* 
-              //? pages = [{ 'NAVER', 'naverSignIn' }, { 'KAKAO', 'kakaoSignIn' }]
-              //? pages = [{ title: 'NAVER', viewValue: 'naverSugnIn'}, {title: 'KAKAO', viewValue: 'kakaoSugnIn'}] 
+              //? pages = [{ 'Naver', 'naverSignIn' }, { 'Kakao', 'kakaoSignIn' }]
+              //? pages = [{ title: 'Naver', viewValue: 'naverSugnIn'}, {title: 'Kakao', viewValue: 'kakaoSugnIn'}] 
               Naver, naverSignIn
 
               Kakao, kakaoSignIn
@@ -115,7 +118,7 @@ function MenuAppBar() {
             {pages.map((page) => (
               <Button
                 key={page.title}
-                onClick={() => setView(page.title)}
+                onClick={() => setView(page.viewValue)}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page.title}
