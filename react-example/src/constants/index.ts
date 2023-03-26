@@ -36,6 +36,6 @@ export const PAGES = [
      },
      {
           title: 'JSX + TSX',
-          viewValue: 'jssxTsx'
+          viewValue: 'jsxTsx'
      }
 ]

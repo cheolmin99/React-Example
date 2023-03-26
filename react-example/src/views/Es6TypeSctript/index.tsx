@@ -171,6 +171,8 @@ export default function Es6Typescript() {
      state = { ...state, email: "이메일"};
      console.log(state);
 
+     //# 9. Enum
+
   return (
     <div>index</div>
   )
